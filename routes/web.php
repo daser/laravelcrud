@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\BlogController;
 
 
 Route::get('/', function () {
@@ -21,3 +22,4 @@ Route::get('/', function () {
 
 
 Route::resource('companies', CompanyController::class);
+Route::resource('blogs', BlogController::class);
