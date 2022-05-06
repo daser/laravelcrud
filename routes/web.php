@@ -12,16 +12,20 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+require __DIR__.'/auth.php';
 use App\Http\Controllers\CompanyController;
-use App\Http\Controllers\BlogController;
-use App\Http\Controllers\CoyController;
 
 
+// Route::group(['middleware'=>"web"], function(){
 Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-Route::resource('companies', CompanyController::class);
-Route::resource('blogs', BlogController::class);
-Route::resource('coys', CoyController::class);
+
+Route::resource('companies', CompanyController::class)->middleware("CustomAuth");
+// });
